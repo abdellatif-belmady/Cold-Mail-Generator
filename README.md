@@ -24,6 +24,7 @@ An AI-powered application that automatically generates personalized cold emails 
 
 ## System Architecture
 
+```mermaid
 flowchart TB
     subgraph User["User Interface"]
         UI[Streamlit Web App]
@@ -74,6 +75,7 @@ flowchart TB
     class JE,EG,GROQ secondary
     class VDB,CSV storage
     class PM,SM primary
+```
 
 ## Prerequisites
 

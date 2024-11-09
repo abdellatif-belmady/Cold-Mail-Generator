@@ -33,7 +33,7 @@ An AI-powered application that automatically generates personalized cold emails 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/cold-email-generator.git
+git clone https://github.com/abdellatif-belmady/Cold-Mail-Generator.git
 cd cold-email-generator
 ```
 

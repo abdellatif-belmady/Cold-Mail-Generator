@@ -51,20 +51,18 @@ flowchart TB
         CSV[(Portfolio CSV)]
     end
 
-    %% Flow definitions
-    UI -->|1. URL Input| WL
-    WL -->|2. Raw HTML| TC
-    TC -->|3. Clean Text| JE
-    JE -->|4. Job Requirements| SM
-    SM -->|5a. Query Skills| VDB
-    CSV -->|5b. Load Data| PM
-    PM -->|5c. Index Portfolio| VDB
-    VDB -->|6. Relevant Examples| EG
+    UI --> WL
+    WL --> TC
+    TC --> JE
+    JE --> SM
+    SM --> VDB
+    CSV --> PM
+    PM --> VDB
+    VDB --> EG
     JE --> GROQ
     EG --> GROQ
-    EG -->|7. Generated Email| UI
+    EG --> UI
 
-    %% Styling
     classDef primary fill:#2986cc,stroke:#1a5585,stroke-width:2px,color:white
     classDef secondary fill:#93c47d,stroke:#6aa84f,stroke-width:2px,color:white
     classDef storage fill:#f1c232,stroke:#bf9000,stroke-width:2px,color:white

@@ -24,6 +24,8 @@ An AI-powered application that automatically generates personalized cold emails 
 
 ## System Architecture
 
+The following diagram illustrates the system's components and their interactions:
+
 ```mermaid
 flowchart TB
     subgraph User["User Interface"]
@@ -74,6 +76,13 @@ flowchart TB
     class VDB,CSV storage
     class PM,SM primary
 ```
+
+Key Components:
+- User Interface: Streamlit web application
+- Data Ingestion: Handles web scraping and text cleaning
+- LLM Processing: Extracts job information and generates emails using Groq
+- RAG System: Manages portfolio matching using ChromaDB
+- Data Storage: Stores portfolio information in CSV format
 
 ## Prerequisites
 

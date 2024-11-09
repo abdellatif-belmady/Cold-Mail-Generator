@@ -11,7 +11,7 @@ An AI-powered application that automatically generates personalized cold emails 
 - 💼 Professional business development context
 - 🚀 Streamlit web interface
 
-## Architecture
+## Project Structure
 
 ```
 ├── main.py           # Streamlit application entry point
@@ -21,6 +21,59 @@ An AI-powered application that automatically generates personalized cold emails 
 └── resource/
     └── my_portfolio.csv  # Portfolio data
 ```
+
+## System Architecture
+
+flowchart TB
+    subgraph User["User Interface"]
+        UI[Streamlit Web App]
+    end
+
+    subgraph DataIngestion["Data Ingestion"]
+        WL[WebBaseLoader]
+        TC[Text Cleaner]
+    end
+
+    subgraph LLMProcessing["LLM Processing"]
+        JE[Job Extractor]
+        EG[Email Generator]
+        GROQ[(Groq LLM)]
+    end
+
+    subgraph RAGSystem["RAG System"]
+        VDB[(ChromaDB)]
+        PM[Portfolio Manager]
+        SM[Similarity Matcher]
+    end
+
+    subgraph DataStorage["Data Storage"]
+        CSV[(Portfolio CSV)]
+    end
+
+    %% Flow definitions
+    UI -->|1. URL Input| WL
+    WL -->|2. Raw HTML| TC
+    TC -->|3. Clean Text| JE
+    JE -->|4. Job Requirements| SM
+    SM -->|5a. Query Skills| VDB
+    CSV -->|5b. Load Data| PM
+    PM -->|5c. Index Portfolio| VDB
+    VDB -->|6. Relevant Examples| EG
+    JE --> GROQ
+    EG --> GROQ
+    EG -->|7. Generated Email| UI
+
+    %% Styling
+    classDef primary fill:#2986cc,stroke:#1a5585,stroke-width:2px,color:white
+    classDef secondary fill:#93c47d,stroke:#6aa84f,stroke-width:2px,color:white
+    classDef storage fill:#f1c232,stroke:#bf9000,stroke-width:2px,color:white
+    classDef interface fill:#8e7cc3,stroke:#674ea7,stroke-width:2px,color:white
+
+    class UI interface
+    class WL,TC primary
+    class JE,EG,GROQ secondary
+    class VDB,CSV storage
+    class PM,SM primary
 
 ## Prerequisites
 
